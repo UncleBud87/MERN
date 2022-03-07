@@ -15,6 +15,14 @@ function test(){
 }
 
 /*
+var needle = 'haystack';
+function test(){
+    var needle = 'magnet';
+    console.log(needle);
+}
+function test(){
+    var needle = 'magnet';
+    console.log(needle);
 */
 
 var brendan = 'super cool';
@@ -25,6 +33,8 @@ function print(){
 console.log(brendan);
 
 /*
+var brendan = 'super cool';
+console.log(brendan);
 */
 
 var food = 'chicken';
@@ -37,6 +47,13 @@ function eat(){
 }
 
 /*
+var food = 'chicken';
+console.log(food);
+function eat(){
+    food = 'half-chicken';
+    console.log(food);
+    var food = 'gone';
+}
 */
 
 mean();
