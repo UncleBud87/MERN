@@ -1,31 +1,27 @@
 import React, { Component } from 'react';
 
 class People extends Component {
+
+    constructor(props) {
+        super(props);
+        const birthdayButton = ()=>{
+            this.props.age+=1
+        }
+    }
+
+
+
     render() {
         return (
             <div>
                 <list>
                     <ul>
-                        <li>Doe, Jane</li>
-                        <li>Age: 45</li>
-                        <li>Hair Color: Black</li>
-                    </ul>
-                    <ul>
-                        <li>Smithj, John</li>
-                        <li>Age: 88</li>
-                        <li>Hair Color: Brown</li>
-                    </ul>
-                    <ul>
-                        <li>Fillmore, Millard</li>
-                        <li>Age: 50</li>
-                        <li>Hair Color: Brown</li>
-                    </ul>
-                    <ul>
-                        <li>Smith, Maria</li>
-                        <li>Age: 62</li>
-                        <li>Hair Color: Brown</li>
+                        <h3>{this.props.lastName}, {this.props.firstName}</h3>
+                        <li>Age: {this.props.age}</li>
+                        <li>Hair Color: {this.props.hairColor}</li>
                     </ul>
                 </list>
+                <button onClick = {this.birthdayButton}>Birthday Button for {this.props.firstName} {this.props.lastName}</button>
             </div>
         )
     }

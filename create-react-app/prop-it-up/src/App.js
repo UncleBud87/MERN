@@ -6,7 +6,10 @@ function App() {
 
   return (
     <div className="App">
-      <People></People>
+      <People firstName={"Jane"} lastName={"Doe"} age={45} hairColor={"Black"}></People>
+      <People firstName={"John"} lastName={"Smith"} age={88} hairColor={"Brown"}></People>
+      <People firstName={"Millard"} lastName={"Fillmore"} age={50} hairColor={"Brown"}></People>
+      <People firstName={"Maria"} lastName={"Smith"} age={62} hairColor={"Brown"}></People>
     </div>
   );
 }
