@@ -1,4 +1,4 @@
-//create a helper function that takes 2 already sorted array, and combines them into one sorted array and returns that new sorted array
+/*//create a helper function that takes 2 already sorted array, and combines them into one sorted array and returns that new sorted array
 
 const combineSortedArrays = (arr1, arr2) => {
     //result array that will contain values from both the input arrays
@@ -116,7 +116,7 @@ const combineSortedArrays = (arr1, arr2) => {
 }
 
 
-```//create a helper function that takes 2 already sorted array, and combines them into one sorted array and returns that new sorted array
+//create a helper function that takes 2 already sorted array, and combines them into one sorted array and returns that new sorted array
 
 const combineSortedArrays = (arr1, arr2) => {
     //result array that will contain values from both the input arrays
@@ -185,4 +185,4 @@ const mergeSort = (arr)=>{
 }
 
 
-console.log(mergeSort([5,4,0,9,2,3,1]))```
+console.log(mergeSort([5,4,0,9,2,3,1]))*/
