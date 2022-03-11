@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Peoples = (props)=> {
-    
+
     return <>
     <div>
         <ul>
@@ -9,10 +9,9 @@ const Peoples = (props)=> {
             <li>Age: {props.age}</li>
             <li>Hair Color: {props.hairColor}</li>
         </ul>
-        <button >Birthday Button for {props.firstName} {props.lastName}</button>
-    </div >
+
+    </div>
     </>
 }
-
 
 export default Peoples;

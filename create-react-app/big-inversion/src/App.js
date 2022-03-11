@@ -13,4 +13,4 @@ function App() {
   );
 }
 
-export default Peoples;
+export default App;
