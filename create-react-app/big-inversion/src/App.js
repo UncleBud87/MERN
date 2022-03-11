@@ -1,16 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-import People from './componesnts/people';
+import Peoples from './components/peoples';
 
 function App() {
   return (
     <div className="App">
-      <People firstName = {"Jane"} lastName = {"Doe"} age = {45} hairColor = {"Black"}></People>
-      <People firstName = {"John"} lastName = {"Smith"} age = {88} hairColor = {"Brown"}></People>
-      <People firstName = {"Millard"} lastName = {"Fillmore"} age = {50} hairColor = {"Brown"}></People>
-      <People firstName = {"Maria"} lastName = {"Smith"} age = {62} hairColor = {"Brown"}></People>
+      <Peoples firstName = {"Jane"} lastName = {"Doe"} age = {45} hairColor = {"Black"}></Peoples>
+      <Peoples firstName = {"John"} lastName = {"Smith"} age = {88} hairColor = {"Brown"}></Peoples>
+      <Peoples firstName = {"Millard"} lastName = {"Fillmore"} age = {50} hairColor = {"Brown"}></Peoples>
+      <Peoples firstName = {"Maria"} lastName = {"Smith"} age = {62} hairColor = {"Brown"}></Peoples>
     </div>
   );
 }
 
-export default App;
+export default Peoples;
