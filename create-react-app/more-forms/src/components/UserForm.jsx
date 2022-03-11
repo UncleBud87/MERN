@@ -60,7 +60,7 @@ const UserForm = () => {
                 <label>Confirm Password: </label>
                 <input type="text" onChange={ (e) => setConfirmPassword(e.target.value) } />
                 {
-                    confirmpassword.length>0 && password!=confirmpassword? <p>Passwords do not match</p> : null
+                    confirmpassword.length>0 && password!==confirmpassword? <p>Passwords do not match</p> : null
                 }
             </div>
             <input type="submit" value="Create User" />
