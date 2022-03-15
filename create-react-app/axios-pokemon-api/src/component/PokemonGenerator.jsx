@@ -36,7 +36,7 @@ const Pokemon = ()=>{
         <button onClick={getPokemonFromApi}>Click for Pokemon</button>
         {
             pokemonList.map((pokeObj, index)=>{
-                return <div>
+                return <div key={index}>
                     <h1>{pokeObj.name}</h1>
                     <hr />
                 </div>
