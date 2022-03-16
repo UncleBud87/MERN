@@ -31,7 +31,7 @@ function App() {
 
 
       <Switch>
-        <Route exact path = "/:num/:color1/:color2">
+        <Route exact path = "/:hello/:color1/:color2">
           <Routing></Routing>
         </Route>
       </Switch>
