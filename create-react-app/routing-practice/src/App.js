@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Routing from './components/routing';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -30,14 +31,7 @@ function App() {
 
 
       <Switch>
-        <Route exact path = "/:hello">
-          <Routing></Routing>
-        </Route>
-      </Switch>
-
-
-      <Switch>
-        <Route exact path = "/:hello/:color1/:color2">
+        <Route exact path = "/:num/:color1/:color2">
           <Routing></Routing>
         </Route>
       </Switch>
