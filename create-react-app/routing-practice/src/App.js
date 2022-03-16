@@ -1,24 +1,50 @@
 import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter,
+  Switch, // tlls react which componen/element will show based on route
+  Route, // specifys the route for a component/element
+  Link // anchor tag that doesnt reload entire page
+} from "react-router-dom";
+import Routing from './components/routing';
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Link to="/home">Home</Link>
+
+
+      <Switch>
+        <Route exact path = "/home">
+          <h1>Welcome</h1>
+        </Route>
+      </Switch>
+
+
+      <Switch>
+        <Route exact path = "/:num">
+          <Routing></Routing>
+        </Route>
+      </Switch>
+
+
+      <Switch>
+        <Route exact path = "/:hello">
+          <Routing></Routing>
+        </Route>
+      </Switch>
+
+
+      <Switch>
+        <Route exact path = "/:hello/:color1/:color2">
+          <Routing></Routing>
+        </Route>
+      </Switch>
+
+
     </div>
+    </BrowserRouter>
   );
 }
 
