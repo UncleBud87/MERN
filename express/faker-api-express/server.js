@@ -1,29 +1,44 @@
 const express = require("express");
 const app = express();
 const port = 8000;
+const { faker } = require('@faker-js/faker');
+
+
+class User {
+    constructor() {
+        this._id = 0;
+        this.firstName = faker.name.firstName();
+        this.lastName = faker.name.lastName();
+        this.phoneNumber = faker.phone.phoneNumberFormat(5);
+        this.email = faker.internet.email();
+        this.password = faker.internet.password();
+    }
+}
+
+class Company {
+    constructor() {
+        this._id = 0;
+        this.name = faker.company.companyName();
+        this.address = [faker.address.streetAddress(),faker.address.city(),faker.address.state(),faker.address.zipCodeByState(),faker.address.country()];
+    }
+}
+
+app.get("/api", (req,res)=>{
+    res.json({msg: "hey"})
+})
+
+app.get("/api/users/new", (req,res)=>{
+    res.json({count: 1, results: new User()});
+})
+
+app.get("/api/companies/new", (req,res)=>{
+    res.json({count:1, results: new Company()});
+})
+
+app.get("/api/user/company", (req,res)=>{
+    res.json({count: 1, user: new User(), company: new Company()});
+})
 
 
 
-
-
-
-
-/*
-from flask import Flask  # Import Flask to allow us to create our app
-app = Flask(__name__)    # Create a new instance of the Flask class called "app"
-
-
-@app.route('/')          # The "@" decorator associates this route with the function immediately following
-def hello_world():
-    return 'Hello World!'  # Return the string 'Hello World!' as a response
-if __name__=="__main__":   # Ensure this file is being run directly and not from a different module    
-    app.run(debug=True)    # Run the app in debug mode.
-*/
-
-
-
-
-
-
-
-
+app.listen( port, () => console.log(`Listening on port: ${port}`) );
