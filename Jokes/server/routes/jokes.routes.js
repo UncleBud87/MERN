@@ -6,9 +6,9 @@ module.exports = (app) =>{
 
     app.get('/api/jokes', JokesController.findAllJokes)
 
-    app.get('/api/jokes/:id', JokesController.findOneJoke)
-
     app.post('/api/jokes', JokesController.createJoke)
+
+    app.get('/api/jokes/:id', JokesController.findOneJoke)
 
     app.post('/api/jokes/:id', JokesController.updateOneJoke)
 
