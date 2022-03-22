@@ -11,6 +11,7 @@ import {
 import AllProducts from './components/AllProducts';
 import CreateNewProduct from './components/CreateNewProduct';
 import ProductDetails from './components/ProductDetails';
+import UpdateProduct from './components/UpdateProduct';
 
 function App() {
 
@@ -29,6 +30,9 @@ let [formSubmitted, setFormSubmitted] = useState(false);
           </Route>
           <Route exact path="/products/:_id">
             <ProductDetails></ProductDetails>
+          </Route>
+          <Route exact path="/products/:id/edit">
+            <UpdateProduct></UpdateProduct>
           </Route>
         </Switch>
       </div>

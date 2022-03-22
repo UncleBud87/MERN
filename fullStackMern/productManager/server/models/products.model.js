@@ -8,8 +8,8 @@ const ProductSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        //required: [true, "Item must have a price"],
-        //minlength: [1, "Item must have a price"]
+        required: [true, "Item must have a price"],
+        minlength: [1, "Item must have a price"]
     },
     description: {
         type: String,
