@@ -3,8 +3,8 @@ const app = express();
 const port = 8000;
 const cors = require("cors");
 
-app.use( express.json() );
-app.use( express.urlencoded({ extended: true }) )
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 require("./server/config/mongoose.config")
@@ -16,4 +16,4 @@ require("./server/routes/product.routes")(app)
 
 
 
-app.listen(port, () => console.log(`Listening on port: ${port}`) );
+app.listen(port, () => console.log(`Listening on port: ${port}`));

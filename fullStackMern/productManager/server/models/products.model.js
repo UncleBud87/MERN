@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ProductSchema =new mongoose.Schema({
+const ProductSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, "Must have a title"],
@@ -16,8 +16,8 @@ const ProductSchema =new mongoose.Schema({
         required: [true, "Must have a description"],
         minlength: [10, "Description must be longer than 10 characters"]
     },
-    },
-    {timestamps: true}
+},
+    { timestamps: true }
 );
 
 const Product = mongoose.model('Product', ProductSchema);
