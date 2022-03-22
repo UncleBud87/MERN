@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
 import {
   BrowserRouter,
   Switch,
@@ -12,6 +13,9 @@ import CreateNewProduct from './components/CreateNewProduct';
 import ProductDetails from './components/ProductDetails';
 
 function App() {
+
+let [formSubmitted, setFormSubmitted] = useState(false);
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -19,9 +23,9 @@ function App() {
         <h1>Product API</h1>
         <Switch>
           <Route exact path="/">
-            <CreateNewProduct></CreateNewProduct>
+            <CreateNewProduct formSubmitted = {formSubmitted} setFormSubmitted = {setFormSubmitted}></CreateNewProduct>
             <hr />
-            <AllProducts></AllProducts>
+            <AllProducts formSubmitted = {formSubmitted}></AllProducts>
           </Route>
           <Route exact path="/products/:_id">
             <ProductDetails></ProductDetails>
