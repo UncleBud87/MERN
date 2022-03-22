@@ -49,12 +49,12 @@ const unionSort2_OldSchoolBoogaloo = (arr1, arr2) => {
     let storage = Array(arr1.length + arr2.length);
     let [x, y] = [0, 0];
     let length = 0;
-    for (let i = 0; x < arr1.length || y < arr2.length; i++){
-        if (arr1[x] === arr2[y]){
+    for (let i = 0; x < arr1.length || y < arr2.length; i++) {
+        if (arr1[x] === arr2[y]) {
             storage[i] = arr1[x];
             x++;
             y++
-        } else if (arr1[x] < arr2[y]){
+        } else if (arr1[x] < arr2[y]) {
             storage[i] = arr1[x];
             x++;
         } else {
@@ -64,7 +64,7 @@ const unionSort2_OldSchoolBoogaloo = (arr1, arr2) => {
         length++;
     }
     let output = Array(length);
-    for (let i = 0; i < length; i++){
+    for (let i = 0; i < length; i++) {
         output[i] = storage[i];
     }
     return output;
@@ -72,13 +72,12 @@ const unionSort2_OldSchoolBoogaloo = (arr1, arr2) => {
 
 const intersect = (arr1, arr2) => {
     const result = [];
-    let [x,y] = [0,0];
+    let [x, y] = [0, 0];
     while (x < arr1.length && y < arr2.length) {
         if (arr1[x] < arr2[y]) x++;
         if (arr1[x] > arr2[y]) y++;
-        if (arr1[x]===arr2[y])
-        {result[result.length] = arr1[x], x,y++}
-    }return result;
+        if (arr1[x] === arr2[y]) { result[result.length] = arr1[x], x, y++ }
+    } return result;
 }
 let arr1 = [1, 2, 2, 3, 4];
 let arr2 = [2, 2, 4, 6, 7, 8];
@@ -90,15 +89,15 @@ console.log(intersect(arr1, arr2));
 
 const unionSortedArrays = (arr1, arr2) => {
     const result = [];
-    let [i,j] = [0,0];
-        while ( i < arr1.length || j < arr2.length){
-            if (arr1[i] < arr2[j] || !arr2[j]){
-                result[result.length] = arr1[i];
-                i++;
-            }else{
-                result[result.length] = arr2[j];
-                j++;
-            }
-        }return result;
+    let [i, j] = [0, 0];
+    while (i < arr1.length || j < arr2.length) {
+        if (arr1[i] < arr2[j] || !arr2[j]) {
+            result[result.length] = arr1[i];
+            i++;
+        } else {
+            result[result.length] = arr2[j];
+            j++;
+        }
+    } return result;
 }
-console.log(unionSortedArrays([0,3,4,31], [4,6,30]));
+console.log(unionSortedArrays([0, 3, 4, 31], [4, 6, 30]));

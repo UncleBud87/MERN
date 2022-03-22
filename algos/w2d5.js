@@ -1,18 +1,18 @@
 
 
-function dedupeString(str){
+function dedupeString(str) {
 
     let output = ""
     let obj = {}
 
-    for (let x=0 ; x < str.length; x++){
-        if(str[x] in obj){
+    for (let x = 0; x < str.length; x++) {
+        if (str[x] in obj) {
             obj[str[x]] += 1
-        }else{
+        } else {
             obj[str[x]] = 1
         }
     }
-    for(const key in obj){
+    for (const key in obj) {
         output += key
     }
     return output
@@ -32,18 +32,18 @@ output: "swet poa"
 */
 
 
-function dedupeString(str){
+function dedupeString(str) {
     let newSTR = ""
-for(let i = 0;i < str.length;i++){
-    let duplicate = false
-    for(x = 0;x < i ;x++){
-        if(str[i] == str[x]){
-            duplicate = true
+    for (let i = 0; i < str.length; i++) {
+        let duplicate = false
+        for (x = 0; x < i; x++) {
+            if (str[i] == str[x]) {
+                duplicate = true
+            }
         }
+        duplicate == false ? newSTR = newSTR + str[i] : null
     }
-    duplicate == false?newSTR = newSTR + str[i]:null
-}
-return newSTR
+    return newSTR
 }
 
 

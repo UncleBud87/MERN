@@ -97,16 +97,16 @@ i=0,1,2,3,4,5,6,7,8
 */
 
 
-function arrayMaker(str){
+function arrayMaker(str) {
     let arr = []
-    for(let i = 0;i < str.length;i++){
+    for (let i = 0; i < str.length; i++) {
         let temp = ""
-        if(str[i] != " "){
+        if (str[i] != " ") {
             // console.log(str[i])
             // break
-            while (str[i] != " "){
-            temp = temp + str[i]
-            i++
+            while (str[i] != " ") {
+                temp = temp + str[i]
+                i++
             }
             arr.push(temp)
         }
