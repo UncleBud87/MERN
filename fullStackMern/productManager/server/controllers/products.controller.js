@@ -45,5 +45,5 @@ module.exports.deleteOneProduct = (req, res) => {
         .then(deleteProduct => {
             res.json({ results: deleteProduct })
         })
-        .catchcatch(err => res.json({ message: 'Something went wrong', error: err }));
+        .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }

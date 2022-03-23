@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const UpdateProduct = (props) => {
 
@@ -11,6 +12,8 @@ const UpdateProduct = (props) => {
 
 
     let { _id } = useParams();
+
+    const history = useHistory();
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/products/${_id}`)
@@ -39,6 +42,7 @@ const UpdateProduct = (props) => {
         axios.put(`http://localhost:8000/api/products/${_id}`, productInfo)
             .then(res=>{
                 console.log("res",res)
+                history.push('/')
             })
             .catch(err =>{
                 console.log("err",err)

@@ -23,6 +23,7 @@ const CreateNewProduct = (props) => {
                     setTitle("");
                     setPrice("");
                     setDescription("");
+                    setFormError({});
                 }
 
             })
