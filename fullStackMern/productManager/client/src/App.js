@@ -31,7 +31,7 @@ let [formSubmitted, setFormSubmitted] = useState(false);
           <Route exact path="/products/:_id">
             <ProductDetails></ProductDetails>
           </Route>
-          <Route exact path="/products/:id/edit">
+          <Route exact path="/products/:_id/edit">
             <UpdateProduct></UpdateProduct>
           </Route>
         </Switch>

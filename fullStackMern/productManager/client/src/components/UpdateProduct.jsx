@@ -1,62 +1,72 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
-    
+
 const UpdateProduct = (props) => {
-    const { id } = useParams();
-    const [title, setTitle] = useState('');
-    const [price, setPrice] = useState(undefined);
-    const [description, setDescription] = useState();
-    
+
+
+
+    let [productInfo, setProductInfo] = useState({})
+
+
+
+    let { _id } = useParams();
+
     useEffect(() => {
-        axios.get("http://localhost:8000/api/products/:id", id)
+        axios.get(`http://localhost:8000/api/products/${_id}`)
             .then(res => {
-                setTitle(res.data.title);
-                setPrice(res.data.price);
-                setDescription(res.data.description);
+                console.log("res", res);
+                setProductInfo(res.data.results)
+
             })
-    }, []);
-    
-    const updateProduct = e => {
-        e.preventDefault();
-        axios.put('http://localhost:8000/api/products/:id', id, {
-            title,
-            price,
-            description,
+            .catch(err => {
+                console.log("err", err);
+            })
+    }, [])
+
+    const changeHandler = (e)=>{
+        setProductInfo({
+            title: e.target.value
         })
-            .then(res => console.log(res))
-            .catch(err => console.error(err));
+        
     }
-    
+
+
+    const updateProduct = (e) => {
+        e.preventDefault();
+
+
+    }
+
     return (
         <div>
             <h1>Update a Product:</h1>
             <form onSubmit={updateProduct}>
                 <p>
                     <label>First Name</label><br />
-                    <input type="text" 
-                    name="title" 
-                    value={title} 
-                    onChange={(e) => { setTitle(e.target.value) }} />
+                    <input type="text"
+                        name="title"
+                        value={productInfo.title}
+                        onChange={changeHandler} />
                 </p>
                 <p>
                     <label>Price:</label><br />
-                    <input type="number" 
-                    name="price"
-                    value={price} 
-                    onChange={(e) => { setPrice(e.target.value) }} />
+                    <input type="number"
+                        name="price"
+                        value={productInfo.price}
+                        onChange={changeHandler} />
                 </p>
                 <p>
                     <label>Price:</label><br />
-                    <input type="text" 
-                    name="description"
-                    value={description} 
-                    onChange={(e) => { setDescription(e.target.value) }} />
+                    <input type="text"
+                        name="description"
+                        value={productInfo.description}
+                        onChange={changeHandler} />
                 </p>
                 <input type="submit" />
             </form>
         </div>
-    )
-}
-    
+    );
+};
+
 export default UpdateProduct;

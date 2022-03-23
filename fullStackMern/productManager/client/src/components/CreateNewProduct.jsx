@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const CreateNewProduct = (props) => {
 
     let [title, setTitle] = useState("");
-    let [price, setPrice] = useState(undefined);
+    let [price, setPrice] = useState("");
     let [description, setDescription] = useState("")
     let [formError, setFormError] = useState({})
 
@@ -21,7 +21,7 @@ const CreateNewProduct = (props) => {
                     props.setFormSubmitted(!props.formSubmitted);
                     
                     setTitle("");
-                    setPrice(undefined);
+                    setPrice("");
                     setDescription("");
                 }
 
@@ -35,18 +35,26 @@ const CreateNewProduct = (props) => {
         <div>
             <form onSubmit={createProduct}>
                 <div className='form-group'>
-                    <label htmlFor="">Title:</label>
-                    <input type="text" name='' className='form-control' onChange={(e) => { setTitle(e.target.value) }} value={title} />
+                    <label htmlFor="">Title:</label><br />
+                    <input type="text" 
+                    name='' 
+                    onChange={(e) => { setTitle(e.target.value) }} 
+                    value={title} />
                     <p className='text-danger'>{formError.title?.message}</p>
                 </div>
                 <div className='form-group'>
-                    <label htmlFor="">Price:</label>
-                    <input type="number" name='' className='form-control' onChange={(e) => { setPrice(e.target.value) }} value={price} />
+                    <label htmlFor="">Price:</label><br />
+                    <input type="number" 
+                    name='' 
+                    onChange={(e) => { setPrice(e.target.value) }} 
+                    value={price} />
                     <p className='text-danger'>{formError.price?.message}</p>
                 </div>
                 <div className='form-group'>
-                    <label htmlFor="">Description:</label>
-                    <input type="text" name='' className='form-control' onChange={(e) => { setDescription(e.target.value) }} value={description} />
+                    <label htmlFor="">Description:</label><br />
+                    <input type="text" name='' 
+                    onChange={(e) => { setDescription(e.target.value) }} 
+                    value={description} />
                     <p className='text-danger'>{formError.description?.message}</p>
                 </div>
                 <input type="submit" value="create product" />
