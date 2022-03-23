@@ -10,7 +10,7 @@ module.exports = (app) => {
 
     app.get('/api/products/:id', ProductsController.findOneProduct)
 
-    app.post('/api/products/:id', ProductsController.updateOneProduct)
+    app.put('/api/products/:id', ProductsController.updateOneProduct)
 
     app.delete('/api/products/:id', ProductsController.deleteOneProduct)
 }

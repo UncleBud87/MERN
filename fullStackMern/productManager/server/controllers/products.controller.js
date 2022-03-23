@@ -37,7 +37,7 @@ module.exports.updateOneProduct = (req, res) => {
         .then(updatedProduct => {
             res.json({ results: updatedProduct })
         })
-        .catchcatch(err => res.json({ message: 'Something went wrong', error: err }));
+        .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
 
 module.exports.deleteOneProduct = (req, res) => {
