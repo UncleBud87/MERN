@@ -27,12 +27,12 @@ const UpdateProduct = (props) => {
             })
     }, [])
 
-    const changeHandler = (e)=>{
+    const changeHandler = (e) => {
         setProductInfo({
             ...productInfo,
             [e.target.name]: e.target.value
         })
-        
+
     }
 
 
@@ -40,15 +40,13 @@ const UpdateProduct = (props) => {
         e.preventDefault();
 
         axios.put(`http://localhost:8000/api/products/${_id}`, productInfo)
-            .then(res=>{
-                console.log("res",res)
+            .then(res => {
+                console.log("res", res)
                 history.push('/')
             })
-            .catch(err =>{
-                console.log("err",err)
+            .catch(err => {
+                console.log("err", err)
             })
-
-
     }
 
     return (

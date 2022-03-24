@@ -1,10 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
+
 
 const CreateNewAuthor = (props) => {
 
     let [name, setName] = useState("");
     let [formError, setFormError] = useState({})
+    const history = useHistory();
+
 
     const createAuthor = (e) => {
         e.preventDefault();
@@ -17,9 +21,9 @@ const CreateNewAuthor = (props) => {
                     setFormError(res.data.error.errors);
                 } else {
                     props.setFormSubmitted(!props.formSubmitted);
-                    
-                    setTitle("");
+                    setName("");
                     setFormError({});
+                    history.push("/");
                 }
 
             })
@@ -39,7 +43,7 @@ const CreateNewAuthor = (props) => {
                     value={name} />
                     <p className='text-danger'>{formError.name?.message}</p>
                 </div>
-                <input type="submit" value="create name" />
+                <input type="submit" value="create name"/>
             </form>
         </div>
     )

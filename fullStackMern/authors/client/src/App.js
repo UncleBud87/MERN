@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import React, { useState } from 'react';
 import {
@@ -10,7 +10,8 @@ import {
 
 import AllAuthors from './components/Authors';
 import CreateNewAuthor from './components/CreateAuthor';
-import UpdateAuthor from './components/EditAuthor';
+import EditAuthor from './components/EditAuthor';
+import WrongPath from './components/WrongPath.jsx'
 
 function App() {
 
@@ -29,7 +30,10 @@ function App() {
             <CreateNewAuthor formSubmitted={formSubmitted} setFormSubmitted={setFormSubmitted}></CreateNewAuthor>
           </Route>
           <Route exact path="/authors/:_id/edit">
-            <UpdateAuthor></UpdateAuthor>
+            <EditAuthor></EditAuthor>
+          </Route>
+          <Route exact path="/authors/:_id">
+            <WrongPath></WrongPath>
           </Route>
         </Switch>
       </div>
