@@ -67,7 +67,7 @@ const EditAuthor = (props) => {
                 </p>
                 <p className='text-danger'>{formError.name?.message}</p>
                 <input type="submit" className='btn btn-danger m-3'/>
-                <Link to="/" className='btn btn-primary m-3'>Cancle</Link>
+                <Link to="/" className='btn btn-primary m-3'>Cancel</Link>
             </form>
         </div>
     );
