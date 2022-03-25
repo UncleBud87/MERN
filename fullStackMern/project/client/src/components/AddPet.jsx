@@ -5,28 +5,22 @@ import { useHistory } from "react-router-dom";
 
 const AddPet = (props) => {
 
-    let [name, setName] = useState("");
-    let [type, setType] = useState("");
-    let [description, setDescription] = useState("");
-    let [skills1, setSkills1] = useState("");
-    let [skills2, setSkills2] = useState("");
-    let [skills3, setSkills3] = useState("");
+    let [data, setData] = useState("");
     let [formError, setFormError] = useState({})
     const history = useHistory();
 
 
     const addPet = (e) => {
         e.preventDefault();
-        let formInfo = { name, type, description, skills1, skills2, skills3 };
 
-        axios.post("http://localhost:8000/api/pet", formInfo)
+        axios.post("http://localhost:8000/api/pet", data)
             .then(res => {
                 console.log("got data", res);
                 if (res.data.error) {
                     setFormError(res.data.error.errors);
                 } else {
                     props.setFormSubmitted(!props.formSubmitted);
-                    setName("");
+                    setData("");
                     setFormError({});
                     history.push("/");
                 }
@@ -49,8 +43,8 @@ const AddPet = (props) => {
                             <input type="text"
                                 name=''
                                 className='form-control'
-                                onChange={(e) => { setName(e.target.value) }}
-                                value={name} />
+                                onChange={(e) => { setData(e.target.value) }}
+                                value={data.name} />
                             <p className='text-danger'>{formError.name?.message}</p>
                             <br />
                             <label><h3 className='m-3'>Type:</h3></label>
@@ -59,7 +53,7 @@ const AddPet = (props) => {
                                 name=''
                                 className='form-control'
                                 onChange={(e) => { setType(e.target.value) }}
-                                value={type} />
+                                value={data.type} />
                             <p className='text-danger'>{formError.type?.message}</p>
                             <br />
                             <label><h3 className='m-3'>Description:</h3></label>
@@ -68,7 +62,7 @@ const AddPet = (props) => {
                                 name=''
                                 className='form-control'
                                 onChange={(e) => { setDescription(e.target.value) }}
-                                value={description} />
+                                value={data.description} />
                             <p className='text-danger'>{formError.description?.message}</p>
                         </div>
                         <div className='col order-1'>
@@ -78,7 +72,7 @@ const AddPet = (props) => {
                                 name=''
                                 className='form-control'
                                 onChange={(e) => { setSkills1(e.target.value) }}
-                                value={skills1} />
+                                value={data.skills1} />
                             <p className='text-danger'>{formError.skills1?.message}</p>
                             <br />
                             <label><h3 className='m-3'>Skill 2:</h3></label>
@@ -87,7 +81,7 @@ const AddPet = (props) => {
                                 name=''
                                 className='form-control'
                                 onChange={(e) => { setSkills2(e.target.value) }}
-                                value={skills2} />
+                                value={data.skills2} />
                             <p className='text-danger'>{formError.skills2?.message}</p>
                             <br />
                             <label><h3 className='m-3'>Skill 3:</h3></label>
@@ -96,7 +90,7 @@ const AddPet = (props) => {
                                 name=''
                                 className='form-control'
                                 onChange={(e) => { setSkills3(e.target.value) }}
-                                value={skills3} />
+                                value={data.skills3} />
                             <p className='text-danger'>{formError.skills3?.message}</p>
                         </div>
                     </div>
