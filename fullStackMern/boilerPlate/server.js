@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 require("./server/config/mongoose.config")
-require("./server/routes/thing.routes")(app)
+require("./server/routes/petShelter.routes")(app)
 
 
 

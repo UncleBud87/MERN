@@ -1,4 +1,4 @@
-const Thing = require('../models/thing.model');
+const Thing = require('../models/petShelter.model');
 
 
 
