@@ -11,7 +11,7 @@ module.exports.findAllPets = (req, res) => {
 }
 
 module.exports.findOnePet = (req, res) => {
-    Thing.findOne({ _id: req.params.id })
+    Pet.findOne({ _id: req.params.id })
         .then(onePet => {
             res.json({ results: onePet })
         })

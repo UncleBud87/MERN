@@ -11,14 +11,7 @@ import { useHistory } from "react-router-dom";
 const AdoptPet = () => {
 
     const { _id } = useParams();
-    let [name, setName] = useState("");
-    let [type, setType] = useState("");
-    let [description, setDescription] = useState("");
-    let [skill1, setSkill1] = useState("");
-    let [skill2, setSkill2] = useState("");
-    let [skill3, setSkill3] = useState("");
-    const [details, setDetails] = useState({})
-
+    const [data, setData] = useState({})
     const history = useHistory();
 
 
@@ -28,7 +21,7 @@ const AdoptPet = () => {
         axios.get(`http://localhost:8000/api/pet/${_id}`)
             .then(res => {
                 console.log("res", res)
-                setDetails(res.data.results);
+                setData(res.data.results);
             })
             .catch(err => {
                 console.log("err", err)
@@ -48,17 +41,65 @@ const AdoptPet = () => {
     }
 
     return (
-        <div>
-            <h2>Details about {details.name} <button onClick = {deletePet} className="btn btn-danger">Adopt {details.name}</button></h2>
-            <h3>{details.type}</h3>
-            <h3>{details.description}</h3>
-            <h3>{details.skills1}</h3><br/>
-            <h3>{details.skills2}</h3><br/>
-            <h3>{details.skills3}</h3><br/>
-            <Link to={`/products/${_id}/edit`}>
+        <div className="border border-dark border-3 container-sm">
+            <h2 className='m-3'>Details about: {data.name} <button onClick = {deletePet} className="btn btn-danger m-3">Adopt {data.name}</button></h2>
+            <div className='row'>
+                        <div className='col'>
+                            <p>
+                                <label ><h3 className='m-3'>Name</h3></label><br />
+                                <input type="text"
+                                    name="name"
+                                    className='form-control'
+                                    readOnly
+                                    value={data.name}/>
+                            </p>
+                            <p>
+                                <label><h3 className='m-3'>Type</h3></label><br />
+                                <input type="text"
+                                    name="type"
+                                    className='form-control'
+                                    readOnly
+                                    value={data.type}/>
+                            </p>
+                            <p>
+                                <label><h3 className='m-3'>Description</h3></label><br />
+                                <input type="text"
+                                    name="description"
+                                    className='form-control'
+                                    readOnly
+                                    value={data.description}/>
+                            </p>
+                        </div>
+                        <div className='col order-1'>
+                            <p>
+                                <label><h3 className='m-3'>Skill</h3></label><br />
+                                <input type="text"
+                                    name="skills1"
+                                    className='form-control'
+                                    readOnly
+                                    value={data.skills1}/>
+                            </p>
+                            <p>
+                                <label><h3 className='m-3'>Skill</h3></label><br />
+                                <input type="text"
+                                    name="skill2"
+                                    className='form-control'
+                                    readOnly
+                                    value={data.skills2}/>
+                            </p>
+                            <p>
+                                <label><h3 className='m-3'>Skill</h3></label><br />
+                                <input type="skills3"
+                                    name="skill3"
+                                    className='form-control'
+                                    readOnly
+                                    value={data.skills3}/>
+                            </p>
+                        </div>
+                    </div>
+            <Link to={`/pet/${_id}/edit`}>
                 Edit
             </Link> <br />
-            <button onClick = {deletePet} className="btn btn-danger">Adopt {details.name}</button>
         </div>
     )
 }
