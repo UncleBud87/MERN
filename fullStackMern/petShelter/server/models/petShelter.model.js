@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
 const PetSchema = new mongoose.Schema({
+
+    name: {
+        type: String,
+        required: [true, "Must have a name"],
+        minlength: [3, "Type must be 3 characters or more"]
+    },
     type: {
         type: String,
         required: [true, "Must have a type"],
@@ -16,12 +22,12 @@ const PetSchema = new mongoose.Schema({
         required: [true, "Must include a skill"],
         minlength: [3, "Skill must be longer than 3 characters. Write none if there is no skill"]
     },
-    skills1: {
+    skills2: {
         type: String,
         required: [true, "Must include a skill"],
         minlength: [3, "Skill must be longer than 3 characters. Write none if there is no skill"]
     },
-    skills1: {
+    skills3: {
         type: String,
         required: [true, "Must include a skill"],
         minlength: [3, "Skill must be longer than 3 characters. Write none if there is no skill"]

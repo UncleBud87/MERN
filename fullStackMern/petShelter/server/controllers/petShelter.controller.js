@@ -1,46 +1,46 @@
-const Thing = require('../models/petShelter.model');
+const Pet = require('../models/petShelter.model');
 
 
 
-module.exports.findAllThings = (req, res) => {
-    Thing.find()
-        .then(allThings => {
-            res.json({ results: allThings })
+module.exports.findAllPets = (req, res) => {
+    Pet.find()
+        .then(allPets => {
+            res.json({ results: allPets })
         })
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
 
-module.exports.findOneThing = (req, res) => {
+module.exports.findOnePet = (req, res) => {
     Thing.findOne({ _id: req.params.id })
-        .then(oneThing => {
-            res.json({ results: oneThing })
+        .then(onePet => {
+            res.json({ results: onePet })
         })
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
 
-module.exports.createThing = (req, res) => {
-    Thing.create(req.body)
-        .then(newlyCreatedThing => {
-            res.json({ results: newlyCreatedThing })
+module.exports.createPet = (req, res) => {
+    Pet.create(req.body)
+        .then(newlyCreatedPet => {
+            res.json({ results: newlyCreatedPet })
         })
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
 
-module.exports.updateOneThing = (req, res) => {
-    Thing.findOneAndUpdate({ _id: req.params.id },
+module.exports.updateOnePet = (req, res) => {
+    Pet.findOneAndUpdate({ _id: req.params.id },
         req.body,
         { new: true, runValidators: true }
     )
-        .then(updatedThing => {
-            res.json({ results: updatedThing })
+        .then(updatedPet => {
+            res.json({ results: updatedPet })
         })
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
 
-module.exports.deleteOneThing = (req, res) => {
-    Thing.deleteOne({ _id: req.params.id })
-        .then(deleteThing => {
-            res.json({ results: deleteThing })
+module.exports.deleteOnePet = (req, res) => {
+    Pet.deleteOne({ _id: req.params.id })
+        .then(deletePet => {
+            res.json({ results: deletePet })
         })
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
