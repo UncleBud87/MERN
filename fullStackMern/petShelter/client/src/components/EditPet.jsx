@@ -66,56 +66,54 @@ const EditPet = (props) => {
                 <form onSubmit={editPet} className="border border-dark border-3 container-sm">
                     <div className='row'>
                         <div className='col'>
-                            <p>
-                                <label ><h3>Name</h3></label><br />
-                                <input type="text"
-                                    name="name"
-                                    className='form-control'
-                                    value={data.name}
-                                    onChange={changeHandler} />
-                            </p>
-                            <p>
-                                <label><h3 className='m-3'>Type</h3></label><br />
-                                <input type="text"
-                                    name="type"
-                                    className='form-control'
-                                    value={data.type}
-                                    onChange={changeHandler} />
-                            </p>
-                            <p>
-                                <label><h3 className='m-3'>Description</h3></label><br />
-                                <input type="text"
-                                    name="description"
-                                    className='form-control'
-                                    value={data.description}
-                                    onChange={changeHandler} />
-                            </p>
+                            <label ><h3>Name</h3></label>
+                            <br />
+                            <input type="text"
+                                name="name"
+                                className='form-control'
+                                value={data.name}
+                                onChange={changeHandler} />
+                            <br />
+                            <label><h3 className='m-3'>Type</h3></label>
+                            <br />
+                            <input type="text"
+                                name="type"
+                                className='form-control'
+                                value={data.type}
+                                onChange={changeHandler} />
+                            <br />
+                            <label><h3 className='m-3'>Description</h3></label>
+                            <br />
+                            <input type="text"
+                                name="description"
+                                className='form-control'
+                                value={data.description}
+                                onChange={changeHandler} />
                         </div>
                         <div className='col order-1'>
-                            <p>
-                                <label><h3 className='m-3'>Skill</h3></label><br />
-                                <input type="text"
-                                    name="skills1"
-                                    className='form-control'
-                                    value={data.skills1}
-                                    onChange={changeHandler} />
-                            </p>
-                            <p>
-                                <label><h3 className='m-3'>Skill</h3></label><br />
-                                <input type="text"
-                                    name="skill2"
-                                    className='form-control'
-                                    value={data.skills2}
-                                    onChange={changeHandler} />
-                            </p>
-                            <p>
-                                <label><h3 className='m-3'>Skill</h3></label><br />
-                                <input type="skills3"
-                                    name="skill3"
-                                    className='form-control'
-                                    value={data.skills3}
-                                    onChange={changeHandler} />
-                            </p>
+                            <label><h3 className='m-3'>Skill</h3></label>
+                            <br />
+                            <input type="text"
+                                name="skills1"
+                                className='form-control'
+                                value={data.skills1}
+                                onChange={changeHandler} />
+                            <br />
+                            <label><h3 className='m-3'>Skill</h3></label>
+                            <br />
+                            <input type="text"
+                                name="skill2"
+                                className='form-control'
+                                value={data.skills2}
+                                onChange={changeHandler} />
+                            <br />
+                            <label><h3 className='m-3'>Skill</h3></label>
+                            <br />
+                            <input type="skills3"
+                                name="skill3"
+                                className='form-control'
+                                value={data.skills3}
+                                onChange={changeHandler} />
                         </div>
                     </div>
                     <p className='text-danger'>{formError.name?.message}</p>

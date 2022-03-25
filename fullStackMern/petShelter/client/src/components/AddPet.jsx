@@ -44,65 +44,63 @@ const AddPet = (props) => {
                 <form onSubmit={addPet} className="border border-dark border-3 container-sm">
                     <div className='row'>
                         <div className='col'>
-                            <p>
-                                <label><h3 className='m-3'>Name:</h3></label><br />
-                                <input type="text"
-                                    name=''
-                                    className='form-control'
-                                    onChange={(e) => { setName(e.target.value) }}
-                                    value={name} />
-                                <p className='text-danger'>{formError.name?.message}</p>
-                            </p>
-                            <p>
-                                <label><h3 className='m-3'>Type:</h3></label><br />
-                                <input type="text"
-                                    name=''
-                                    className='form-control'
-                                    onChange={(e) => { setType(e.target.value) }}
-                                    value={type} />
-                                <p className='text-danger'>{formError.type?.message}</p>
-                            </p>
-                            <p>
-                                <label><h3 className='m-3'>Description:</h3></label><br />
-                                <input type="text"
-                                    name=''
-                                    className='form-control'
-                                    onChange={(e) => { setDescription(e.target.value) }}
-                                    value={description} />
-                                <p className='text-danger'>{formError.description?.message}</p>
-                            </p>
+                            <label><h3 className='m-3'>Name:</h3></label>
+                            <br />
+                            <input type="text"
+                                name=''
+                                className='form-control'
+                                onChange={(e) => { setName(e.target.value) }}
+                                value={name} />
+                            <p className='text-danger'>{formError.name?.message}</p>
+                            <br />
+                            <label><h3 className='m-3'>Type:</h3></label>
+                            <br />
+                            <input type="text"
+                                name=''
+                                className='form-control'
+                                onChange={(e) => { setType(e.target.value) }}
+                                value={type} />
+                            <p className='text-danger'>{formError.type?.message}</p>
+                            <br />
+                            <label><h3 className='m-3'>Description:</h3></label>
+                            <br />
+                            <input type="text"
+                                name=''
+                                className='form-control'
+                                onChange={(e) => { setDescription(e.target.value) }}
+                                value={description} />
+                            <p className='text-danger'>{formError.description?.message}</p>
                         </div>
                         <div className='col order-1'>
-                            <p>
-                                <label><h3 className='m-3'>Skill 1:</h3></label><br />
-                                <input type="text"
-                                    name=''
-                                    className='form-control'
-                                    onChange={(e) => { setSkills1(e.target.value) }}
-                                    value={skills1} />
-                                <p className='text-danger'>{formError.skills1?.message}</p>
-                            </p>
-                            <p>
-                                <label><h3 className='m-3'>Skill 2:</h3></label><br />
-                                <input type="text"
-                                    name=''
-                                    className='form-control'
-                                    onChange={(e) => { setSkills2(e.target.value) }}
-                                    value={skills2} />
-                                <p className='text-danger'>{formError.skills2?.message}</p>
-                            </p>
-                            <p>
-                                <label><h3 className='m-3'>Skill 3:</h3></label><br />
-                                <input type="text"
-                                    name=''
-                                    className='form-control'
-                                    onChange={(e) => { setSkills3(e.target.value) }}
-                                    value={skills3} />
-                                <p className='text-danger'>{formError.skills3?.message}</p>
-                            </p>
+                            <label><h3 className='m-3'>Skill 1:</h3></label>
+                            <br />
+                            <input type="text"
+                                name=''
+                                className='form-control'
+                                onChange={(e) => { setSkills1(e.target.value) }}
+                                value={skills1} />
+                            <p className='text-danger'>{formError.skills1?.message}</p>
+                            <br />
+                            <label><h3 className='m-3'>Skill 2:</h3></label>
+                            <br />
+                            <input type="text"
+                                name=''
+                                className='form-control'
+                                onChange={(e) => { setSkills2(e.target.value) }}
+                                value={skills2} />
+                            <p className='text-danger'>{formError.skills2?.message}</p>
+                            <br />
+                            <label><h3 className='m-3'>Skill 3:</h3></label>
+                            <br />
+                            <input type="text"
+                                name=''
+                                className='form-control'
+                                onChange={(e) => { setSkills3(e.target.value) }}
+                                value={skills3} />
+                            <p className='text-danger'>{formError.skills3?.message}</p>
                         </div>
                     </div>
-                    <input type="submit" value="Add Pet" className='btn btn-primary' />
+                    <input type="submit" value="Add Pet" className='btn btn-primary m-3' />
                 </form>
             </div>
         </div>
