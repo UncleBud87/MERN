@@ -73,6 +73,7 @@ const EditPet = (props) => {
                                 className='form-control'
                                 value={data.name}
                                 onChange={changeHandler} />
+                                <p className='text-danger'>{formError.name?.message}</p>
                             <br />
                             <label><h3 className='m-3'>Type</h3></label>
                             <br />
@@ -81,6 +82,7 @@ const EditPet = (props) => {
                                 className='form-control'
                                 value={data.type}
                                 onChange={changeHandler} />
+                                <p className='text-danger'>{formError.type?.message}</p>
                             <br />
                             <label><h3 className='m-3'>Description</h3></label>
                             <br />
@@ -89,6 +91,7 @@ const EditPet = (props) => {
                                 className='form-control'
                                 value={data.description}
                                 onChange={changeHandler} />
+                                <p className='text-danger'>{formError.description?.message}</p>
                         </div>
                         <div className='col order-1'>
                             <label><h3 className='m-3'>Skill</h3></label>
@@ -98,6 +101,7 @@ const EditPet = (props) => {
                                 className='form-control'
                                 value={data.skills1}
                                 onChange={changeHandler} />
+                                <p className='text-danger'>{formError.skills1?.message}</p>
                             <br />
                             <label><h3 className='m-3'>Skill</h3></label>
                             <br />
@@ -106,6 +110,7 @@ const EditPet = (props) => {
                                 className='form-control'
                                 value={data.skills2}
                                 onChange={changeHandler} />
+                                <p className='text-danger'>{formError.skills2?.message}</p>
                             <br />
                             <label><h3 className='m-3'>Skill</h3></label>
                             <br />
@@ -114,9 +119,10 @@ const EditPet = (props) => {
                                 className='form-control'
                                 value={data.skills3}
                                 onChange={changeHandler} />
+                                <p className='text-danger'>{formError.skill3?.message}</p>
                         </div>
                     </div>
-                    <p className='text-danger'>{formError.name?.message}</p>
+                    
                     <input type="submit" className='btn btn-danger m-3' />
                 </form>
             </div>
