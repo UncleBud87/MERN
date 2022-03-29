@@ -7,84 +7,93 @@ const bcrypt = require('bcrypt');
 class UserController {
 
     registerUser = (req, res) => {
-        User.create(req.body)
-            .then(user => {
-                const userToken = jwt.sign({
-                    id: user._id
-                }, process.env.SECRET_KEY);
+        User.find({ email: req.body.email })
+            .then(usersWithEmail => {
+                console.log('finding user response', usersWithEmail)
+                if (usersWithEmail.length === 0) {
+                    User.create(req.body)
+                        .then(user => {
+                            const userToken = jwt.sign({
+                                id: user._id,
+                                firstName: user.firstName
+                            }, process.env.SECRET_KEY);
 
-                res
-                    .cookie("usertoken", userToken, process.env.SECRET_KEY, {
-                        httpOnly: true
-                    })
-                    .json({ msg: "success!", user: user });
+                            res
+                                .cookie("usertoken", userToken, process.env.SECRET_KEY, {
+                                    httpOnly: true
+                                })
+                                .json({ msg: "success!", user: user });
+                        })
+                        .catch(err => res.json(err));
+                }else{
+                    res.json({emailTaken:'Email is already in use'})
+                }
             })
-            .catch(err => res.json(err));
-    }
+            .catch(err => console.log('err', err))
 
-    login = async (req, res) => {
-        const user = await User.findOne({ email: req.body.email });
-        if (user === null) {
-            return res.json({msg: "User not found."})
+        login = async (req, res) => {
+            const user = await User.findOne({ email: req.body.email });
+            if (user === null) {
+                return res.json({ msg: "User not found." })
+            }
+
+            const correctPassword = await bcrypt.compare(req.body.password, user.password);
+            if (!correctPassword) {
+                return res.sendStatus(400);
+            }
+
+            const userToken = jwt.sign({
+                id: user._id
+            }, process.env.SECRET_KEY);
+
+            res
+                .cookie("usertoken", userToken, secret, {
+                    httpOnly: true
+                })
+                .json({ msg: "success!" });
         }
 
-        const correctPassword = await bcrypt.compare(req.body.password, user.password);
-        if (!correctPassword) {
-            return res.sendStatus(400);
+        logout = (req, res) => {
+            res.clearCookie('usertoken');
+            res.sendStatus(200);
         }
 
-        const userToken = jwt.sign({
-            id: user._id
-        }, process.env.SECRET_KEY);
+        findAllUsers = (req, res) => {
+            User.find()
+                .then(allUsers => {
+                    res.json({ results: allUsers })
+                })
+                .catch(err => res.json({ message: 'Something went wrong', error: err }))
+        }
 
-        res
-            .cookie("usertoken", userToken, secret, {
-                httpOnly: true
-            })
-            .json({ msg: "success!" });
+        findOneUser = (req, res) => {
+            User.findOne({ _id: req.params.id })
+                .then(oneUser => {
+                    res.json({ results: oneUser })
+                })
+                .catch(err => res.json({ message: 'Something went wrong', error: err }))
+        }
+
+        updateOneUser = (req, res) => {
+            User.findOneAndUpdate({ _id: req.params.id },
+                req.body,
+                { new: true, runValidators: true }
+            )
+                .then(updatedUser => {
+                    res.json({ results: updatedUser })
+                })
+                .catch(err => res.json({ message: 'Something went wrong', error: err }))
+        }
+
+        deleteOneUser = (req, res) => {
+            User.deleteOne({ _id: req.params.id })
+                .then(deleteUser => {
+                    res.json({ results: deleteUser })
+                })
+                .catch(err => res.json({ message: 'Something went wrong', error: err }))
+        }
+
     }
-
-    logout = (req, res) => {
-        res.clearCookie('usertoken');
-        res.sendStatus(200);
-    }
-
-    findAllUsers = (req, res) => {
-        User.find()
-            .then(allUsers => {
-                res.json({ results: allUsers })
-            })
-            .catch(err => res.json({ message: 'Something went wrong', error: err }))
-    }
-
-    findOneUser = (req, res) => {
-        User.findOne({ _id: req.params.id })
-            .then(oneUser => {
-                res.json({ results: oneUser })
-            })
-            .catch(err => res.json({ message: 'Something went wrong', error: err }))
-    }
-
-    updateOneUser = (req, res) => {
-        User.findOneAndUpdate({ _id: req.params.id },
-            req.body,
-            { new: true, runValidators: true }
-        )
-            .then(updatedUser => {
-                res.json({ results: updatedUser })
-            })
-            .catch(err => res.json({ message: 'Something went wrong', error: err }))
-    }
-
-    deleteOneUser = (req, res) => {
-        User.deleteOne({ _id: req.params.id })
-            .then(deleteUser => {
-                res.json({ results: deleteUser })
-            })
-            .catch(err => res.json({ message: 'Something went wrong', error: err }))
-    }
-
-}
 
 module.exports = new UserController();
 
