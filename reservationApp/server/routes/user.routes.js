@@ -4,7 +4,7 @@ module.exports = (app) => {
 
     app.get('/api/user', UserController.findAllUsers)
 
-    app.post('/api/user', UserController.createUser)
+    app.post('/api/user/register', UserController.registerUser)
 
     app.get('/api/user/:id', UserController.findOneUser)
 

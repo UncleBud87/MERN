@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require("cors");
+require('dotenv').config();
 
+console.log("secret key is this", process.env.SECRET_KEY)
 const app = express();
 const port = 8000;
 

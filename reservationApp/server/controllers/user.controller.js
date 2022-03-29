@@ -20,12 +20,12 @@ class UserController {
             .catch(err => res.json({ message: 'Something went wrong', error: err }))
     }
 
-    createUser = (req, res) => {
+    registerUser = (req, res) => {
         User.create(req.body)
-            .then(newlyCreatedUser => {
-                res.json({ results: newlyCreatedUser })
+            .then(user => {
+                res.json({ msg: "success!", user: user });
             })
-            .catch(err => res.json({ message: 'Something went wrong', error: err }))
+            .catch(err => res.json(err));
     }
 
     updateOneUser = (req, res) => {
