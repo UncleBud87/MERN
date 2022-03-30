@@ -34,21 +34,24 @@ class UserController {
 
     login = async (req, res) => {
         const user = await User.findOne({ email: req.body.email });
+
         if (user === null) {
-            return res.json({ msg: "User not found." })
+            return res.json({ error: "User not found." })
         }
 
         const correctPassword = await bcrypt.compare(req.body.password, user.password);
+
         if (!correctPassword) {
-            return res.sendStatus(400);
+            return res.json({error: "Password is incorrect!"});
         }
 
         const userToken = jwt.sign({
-            id: user._id
+            id: user._id,
+            firstName: user.firstName
         }, process.env.SECRET_KEY);
 
         res
-            .cookie("usertoken", userToken, secret, {
+            .cookie("usertoken", userToken, process.env.SECRET_KEY, {
                 httpOnly: true
             })
             .json({ msg: "success!" });
@@ -58,6 +61,21 @@ class UserController {
         res.clearCookie('usertoken');
         res.sendStatus(200);
     }
+
+    loggedInUser = (req, res) => {
+
+        const decodedJWT = jwt.decode(req.cookies.usertoken, {complete:true})
+
+        User.findOne({_id: decodedJWT.payload.id})
+        .then(foundUser=>{
+            res.json({results: foundUser})
+        })
+        .catch(err=>{
+            res.json(err)
+        })
+    }
+
+
 
     findAllUsers = (req, res) => {
         User.find()
