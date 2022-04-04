@@ -42,7 +42,7 @@ class UserController {
         const correctPassword = await bcrypt.compare(req.body.password, user.password);
 
         if (!correctPassword) {
-            return res.json({error: "Password is incorrect!"});
+            return res.json({ error: "Password is incorrect!" });
         }
 
         const userToken = jwt.sign({
@@ -64,15 +64,15 @@ class UserController {
 
     loggedInUser = (req, res) => {
 
-        const decodedJWT = jwt.decode(req.cookies.usertoken, {complete:true})
+        const decodedJWT = jwt.decode(req.cookies.usertoken, { complete: true })
 
-        User.findOne({_id: decodedJWT.payload.id})
-        .then(foundUser=>{
-            res.json({results: foundUser})
-        })
-        .catch(err=>{
-            res.json(err)
-        })
+        User.findOne({ _id: decodedJWT.payload.id })
+            .then(foundUser => {
+                res.json({ results: foundUser })
+            })
+            .catch(err => {
+                res.json(err)
+            })
     }
 
 

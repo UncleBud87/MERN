@@ -34,7 +34,7 @@ const RegistrationForm = () => {
     }
 
     return (
-        <div className="border border-dark m-3">
+        <div className="m-3">
             <h2 className="m-3"> Register </h2>
             <form className="m-3" onSubmit={registerUser}>
                 <div className="form-group">

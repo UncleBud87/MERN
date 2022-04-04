@@ -28,7 +28,7 @@ const LoginForm = () => {
 
 
     return (
-        <div className="border border-dark m-3">
+        <div className=" m-3">
             <h2 className="m-3"> Login </h2>
             <form className="m-3" onSubmit={login}>
                 <div className="form-group">
